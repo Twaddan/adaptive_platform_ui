@@ -26,6 +26,9 @@ enum IOS26ButtonStyle {
 
   /// Prominent glass button with enhanced blur effect
   prominentGlass,
+
+  /// Clear glass button for use over colourful content
+  clearGlass,
 }
 
 /// iOS 26 button size presets matching native design
@@ -290,6 +293,8 @@ class _IOS26ButtonState extends State<IOS26Button> {
         return 'glass';
       case IOS26ButtonStyle.prominentGlass:
         return 'prominentGlass';
+      case IOS26ButtonStyle.clearGlass:
+        return 'clearGlass';
     }
   }
 

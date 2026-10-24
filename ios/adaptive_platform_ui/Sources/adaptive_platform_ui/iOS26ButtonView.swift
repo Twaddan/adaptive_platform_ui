@@ -193,6 +193,14 @@ class iOS26ButtonView: NSObject, FlutterPlatformView {
                     config = .tinted()
                     config.background.visualEffect = UIBlurEffect(style: .systemMaterial)
                 }
+            case "clearGlass":
+                if #available(iOS 26.0, *) {
+                    config = .clearGlass()
+                } else {
+                    // Fallback: plain style with the thinnest material
+                    config = .plain()
+                    config.background.visualEffect = UIBlurEffect(style: .systemUltraThinMaterial)
+                }
             default:
                 config = .filled()
             }
@@ -247,7 +255,7 @@ class iOS26ButtonView: NSObject, FlutterPlatformView {
                 case "tinted", "bordered", "gray", "plain":
                     // Use custom text color if provided, otherwise tint
                     config.baseForegroundColor = textColor ?? tint
-                case "glass", "prominentGlass":
+                case "glass", "prominentGlass", "clearGlass":
                     // Glass buttons use tint color or custom text color
                     config.baseForegroundColor = textColor ?? tint
                 default:
@@ -301,7 +309,7 @@ class iOS26ButtonView: NSObject, FlutterPlatformView {
         case "plain":
             button.backgroundColor = .clear
             button.setTitleColor(buttonColor, for: .normal)
-        case "glass", "prominentGlass":
+        case "glass", "prominentGlass", "clearGlass":
             // Fallback for glass effects on iOS < 15
             button.backgroundColor = buttonColor.withAlphaComponent(0.2)
             button.setTitleColor(buttonColor, for: .normal)

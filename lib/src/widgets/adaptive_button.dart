@@ -343,6 +343,7 @@ class AdaptiveButton extends StatelessWidget {
 
       case AdaptiveButtonStyle.glass:
       case AdaptiveButtonStyle.prominentGlass:
+      case AdaptiveButtonStyle.clearGlass:
         // Cupertino doesn't have glass effects on old iOS, fallback to tinted
         final effectiveColor = color ?? CupertinoTheme.of(context).primaryColor;
         final textColorValue = textColor ?? effectiveColor;
@@ -530,6 +531,7 @@ class AdaptiveButton extends StatelessWidget {
 
       case AdaptiveButtonStyle.glass:
       case AdaptiveButtonStyle.prominentGlass:
+      case AdaptiveButtonStyle.clearGlass:
         // Material doesn't have glass effects, fallback to tinted style
         return FilledButton.tonal(
           onPressed: effectiveOnPressed,
@@ -563,6 +565,8 @@ class AdaptiveButton extends StatelessWidget {
         return IOS26ButtonStyle.glass;
       case AdaptiveButtonStyle.prominentGlass:
         return IOS26ButtonStyle.prominentGlass;
+      case AdaptiveButtonStyle.clearGlass:
+        return IOS26ButtonStyle.clearGlass;
     }
   }
 
@@ -611,6 +615,9 @@ enum AdaptiveButtonStyle {
 
   /// Prominent glass button (iOS 26+ only)
   prominentGlass,
+
+  /// Clear glass button for use over colourful content (iOS 26+ only)
+  clearGlass,
 }
 
 /// Button size presets

@@ -361,6 +361,8 @@ class iOS26ButtonView: NSObject, FlutterPlatformView {
             if let args = call.arguments as? [String: Any],
                let colorHex = args["color"] as? String {
                 buttonColor = UIColor(hexString: colorHex) ?? .systemBlue
+                // The style reads the colour from the button's tint.
+                button.tintColor = buttonColor
                 applyLiquidGlassStyle()
             }
             result(nil)

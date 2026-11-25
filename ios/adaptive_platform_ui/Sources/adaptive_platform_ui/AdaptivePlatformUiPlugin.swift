@@ -94,5 +94,10 @@ public class AdaptivePlatformUiPlugin: NSObject, FlutterPlugin {
             binaryMessenger: registrar.messenger()
         )
         verticalBarEdgeChannel.setStreamHandler(VerticalBarEdgeStreamHandler(registrar: registrar))
+
+        // iPhone Duo: Apple's own tab bar in the system's vertical bar (iOS 27.1)
+        systemTabBarHost = SystemTabBarHost(registrar: registrar)
     }
+
+    private static var systemTabBarHost: SystemTabBarHost?
 }
